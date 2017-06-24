@@ -12,8 +12,6 @@
    <div class="container">
      <h1>Lunch Checker</h1>
      <div ng-controller='LunchCheckController'>
-       {{name}}
-       {{status}}
          <div class="form-group">
              <input id="lunch-menu" type="text"
              placeholder="list comma separated dishes you usually have for lunch"
@@ -22,18 +20,20 @@
              ng-keyup="message();">
          </div>
          <div class="form-group">
-             <button class="btn btn-default" >Check If Too Much</button>
+             <button class="btn btn-default" ng-click="chk()" >Check If Too Much</button>
          </div>
-         <div class="form-group message">
-           <div ng-if="{{status!=0}}">
-              "Empty String"
+         <div class="form-group message"> 
+         <div ng-if="check===1">
+           <div ng-if="status===0">
+              "Please enter data first"
              </div>
-             <div ng-if="{{status<=3}}">
+             <div ng-if="status===3 || status===2 || status===1">
                "Enjoy!"
              </div>
-             <div ng-if="{{status>3}}">
+             <div ng-if="status>3">
                "Too much!"
              </div>
+           </div>
          </div>
       </div>
    </div>
